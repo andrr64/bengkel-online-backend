@@ -1,3 +1,5 @@
 *.env
 *.conda
 *.venv
+*.vscode
+*.idea
