@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, DateTime, func, Boolean
+from sqlalchemy import Column, Integer, String, DateTime, func, Boolean, Enum
 from app.core.database import Base
 from sqlalchemy.sql.expression import true
+from app.models.role import Role
 
 class PelangganTable(Base):
     __tablename__ = "pelanggan"
@@ -11,5 +12,6 @@ class PelangganTable(Base):
     password = Column(String, nullable=False)
     no_telepon = Column(String, unique=True, nullable=False, index=True)
     dibuat = Column(DateTime(timezone=True), server_default=func.now())
+    role = Column(Enum(Role), default=Role.pelanggan)
     diperbaharui = Column(DateTime(timezone=True), onupdate=func.now())
     aktif = Column(Boolean, nullable=False, server_default=true())
