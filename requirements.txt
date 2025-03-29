@@ -12,3 +12,4 @@ pytest
 requests
 bcrypt==4.3.0
 python-jose==3.4.0
+redis
