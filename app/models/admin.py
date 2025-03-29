@@ -8,8 +8,8 @@ class AdminTable(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     aktif = Column(Boolean, nullable=False, server_default=true())
-    usernama = Column(String, nullable=False, unique=True)
+    username = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
     dibuat = Column(DateTime(timezone=True), server_default=func.now())
-    role = Column(Enum(Role), default=Role.admin)
-    diperbaharui = Column(DateTime(timezone=True), onupdate=func.now())
+    role = Column(Enum(Role), default=Role.admin.value, nullable=False)
+    diperbaharui = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())

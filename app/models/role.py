@@ -1,6 +1,9 @@
-import enum
+from enum import Enum as PyEnum
+from sqlalchemy.dialects.postgresql import ENUM
 
-class Role(enum.Enum):
-    pelanggan = 0x1b
-    mitra = 0x1a
-    admin = 0x0a
+class Role(PyEnum):
+    pelanggan = "pelanggan"
+    mitra = "mitra"
+    admin = "admin"
+    
+role_enum = ENUM(*[role.value for role in Role], name="role_type", create_type=False)

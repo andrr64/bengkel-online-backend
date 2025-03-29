@@ -12,6 +12,6 @@ class PelangganTable(Base):
     password = Column(String, nullable=False)
     no_telepon = Column(String, unique=True, nullable=False, index=True)
     dibuat = Column(DateTime(timezone=True), server_default=func.now())
-    role = Column(Enum(Role), default=Role.pelanggan)
+    role = Column(Enum(Role), default=Role.pelanggan.value, nullable=False)
     diperbaharui = Column(DateTime(timezone=True), onupdate=func.now())
     aktif = Column(Boolean, nullable=False, server_default=true())

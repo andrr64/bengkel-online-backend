@@ -12,5 +12,5 @@ class MitraTable(Base):
     no_telepon = Column(String, unique=True, nullable=False, index=True)
     dibuat = Column(DateTime(timezone=True), server_default=func.now())
     diperbaharui = Column(DateTime(timezone=True), onupdate=func.now())
-    role = Column(Enum(Role), default=Role.mitra)
+    role = Column(Enum(Role), default=Role.mitra.value, nullable=False)
     aktif = Column(Boolean, nullable=False, server_default=true())
